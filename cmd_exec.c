@@ -162,10 +162,8 @@ int check_error_cmd(char *dir, data_shell *datash)
  */
 int cmd_exec(data_shell *datash)
 {
-	pid_t pd = 0;
-	pid_t wpd;
-	int state = 0;
-	int exec;
+	pid_t pd = 0, wpd;
+	int state = 0, exec;
 	char *dir;
 	(void)wpd;
 
@@ -195,8 +193,7 @@ int cmd_exec(data_shell *datash)
 	}
 	else
 	{
-		do
-		{
+		do {
 			wpd = waitpid(pd, &state, WUNTRACED);
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
